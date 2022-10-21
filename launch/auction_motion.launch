@@ -44,6 +44,9 @@
     <arg name="debug" value="false"/>
   </include>
 
+  
+  <node name="randomizer" pkg="auction_motion" type="randomizer" respawn="false" output="screen" />
+
   <group ns = "$(arg first_tb3)">
     <node name="pose_setter" pkg="auction_motion" type="pose_setter" respawn="false" output="screen" >
       <param name="initial_x" type="double" value="$(arg first_tb3_x_pos)" />
@@ -51,7 +54,8 @@
       <param name="initial_theta" type="double" value="$(arg first_tb3_yaw)" />
     </node>
 
-    <node name="leader" pkg="auction_motion" type="leader" respawn="false" output="screen" />
+    <node name="auctioneer" pkg="auction_motion" type="auctioneer" respawn="false" output="screen" />
+    <node name="bidder" pkg="auction_motion" type="bidder" respawn="false" output="screen" />
 
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
@@ -70,7 +74,7 @@
       <param name="initial_theta" type="double" value="$(arg second_tb3_yaw)" />
     </node>
 
-    <node name="follower" pkg="auction_motion" type="follower" respawn="false" output="screen" />
+    <node name="bidder" pkg="auction_motion" type="bidder" respawn="false" output="screen" />
 
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
 
@@ -89,7 +93,7 @@
       <param name="initial_theta" type="double" value="$(arg third_tb3_yaw)" />
     </node>
     
-    <node name="follower" pkg="auction_motion" type="follower" respawn="false" output="screen" />
+    <node name="bidder" pkg="auction_motion" type="bidder" respawn="false" output="screen" />
 
     <param name="robot_description" command="$(find xacro)/xacro --inorder $(find turtlebot3_description)/urdf/turtlebot3_$(arg model).urdf.xacro" />
 

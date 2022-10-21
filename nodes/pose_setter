@@ -16,10 +16,10 @@ class PoseSetter():
     self.inital_pose_pub = rospy.Publisher(NEW_INITAL_POSE_TOPIC,
                                            PoseWithCovarianceStamped,
                                            queue_size=1)
-    self.fixed_frame = rospy.get_namespace()
-    self.initial_x = rospy.get_param(self.fixed_frame + 'pose_setter/initial_x')
-    self.initial_y = rospy.get_param(self.fixed_frame + 'pose_setter/initial_y')
-    self.initial_theta = rospy.get_param(self.fixed_frame + 'pose_setter/initial_theta')
+    self.fixed_frame = rospy.get_namespace() + 'odom'
+    self.initial_x = rospy.get_param(rospy.get_namespace() + 'pose_setter/initial_x')
+    self.initial_y = rospy.get_param(rospy.get_namespace() + 'pose_setter/initial_y')
+    self.initial_theta = rospy.get_param(rospy.get_namespace() + 'pose_setter/initial_theta')
   
   def setting_pose(self):
     rate = rospy.Rate(FREQUENCY)

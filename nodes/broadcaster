@@ -21,7 +21,7 @@ class Broadcaster():
     rospy.spin()
 
   def _initial_pose_callback(self, msg):
-    """Processing of odom message."""
+    """Processing of initial pose message."""
     br = tf.TransformBroadcaster()
     br.sendTransform((msg.pose.pose.position.x, msg.pose.pose.position.y, 0),
                     quaternion_from_euler(msg.pose.pose.orientation.x,msg.pose.pose.orientation.y,msg.pose.pose.orientation.z),
